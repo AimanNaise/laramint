@@ -77,4 +77,14 @@ class User extends Authenticatable
             'user_id'
         );
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function conversations()
+    {
+        return $this->belongsToMany(Conversation::class);
+    }
 }

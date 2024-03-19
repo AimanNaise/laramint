@@ -28,11 +28,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         Blade::directive('svg', function ($value) {
-            return "
-                <?php
-                    echo $value + 1;
-                ?>
-            ";
+            return "<?php echo ($value + 1); ?>";
         });
+        
     }
 }

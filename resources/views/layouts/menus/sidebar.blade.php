@@ -19,7 +19,7 @@
             <span>{{ __("Dashboard") }}</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('dashboard') }}">
+        <a class="nav-link" href="{{ route('conversations.index') }}">
             <i class="fas fa-fw fa-envelope"></i>
             <span>{{ __("Messages") }}</span></a>
     </li>

@@ -7,6 +7,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Admin\Badges\BadgeController;
 use App\Http\Controllers\Admin\Menu\CourseManagmentController;
 use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\Education\CourseController;
 use App\Http\Controllers\Education\DepartmentController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\learn\WorkoutController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\Mentors\MentorCommentsController;
 use App\Http\Controllers\Mentors\MyLearnerController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\Panel\MyCourseController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\PlanController;
@@ -164,4 +166,12 @@ Route::prefix('panel')->middleware(['verified'])->group(function () {
     Route::resource('role', RoleController::class)->middleware('role:Super-Admin');
     Route::resource('permission', PermissionController::class)->middleware('role:Super-Admin');
     Route::post('role/permission/{role}', [RoleController::class, 'permission'])->name("role_permissions");
+
+    // Message
+    Route::get('/conversations', [ConversationController::class, 'index'])->name('conversations.index');
+    Route::get('/conversations/{conversation}', [ConversationController::class, 'show'])->name('conversations.show');
+    Route::post('/conversations/{conversation}/messages', [MessageController::class, 'store'])->name('messages.store');
+    
+
+
 });
